@@ -1,4 +1,4 @@
-if (Users.find().count() === 0) {
+/* if (Meteor.users.find().count() === 0) {
   Users.insert({
     name: 'Leeah Kohley',
     phone: '(231) 215-7062',
@@ -16,4 +16,4 @@ if (Users.find().count() === 0) {
     phone: '(512) 643-5498',
     email: 'bmarley@gmail.com'
   });
-}
+} */

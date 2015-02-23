@@ -1,3 +1,7 @@
 Meteor.publish('users', function() {
-  return Users.find();
+  return Meteor.users.find();
+});
+
+Meteor.publish('subscribers', function() {
+  return Meteor.users.find({ "profile.isSubscribed": true });
 });

@@ -1,0 +1,10 @@
+<template name="dashboard">
+  <h2>Welcome {{name}}!</h2>
+  <p>Your phone: {{phone}}</p>
+
+  {{#if isSubscribed}}
+    <p>Status: <span class="subscribed">Subscribed</span></p>
+  {{else}}
+    <button class="btn btn-primary btn-large" id="subscribe">Subscribe</button>
+  {{/if}}
+</template>

@@ -10,3 +10,6 @@ twbs:bootstrap
 underscore
 iron:router
 sacha:spin
+accounts-base
+accounts-password
+mrgalaxy:stripe

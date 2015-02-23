@@ -1,0 +1,8 @@
+<template name="subscribersList">
+  <h2>{{subscriberCount}} subscribers</h2>
+  <div class="users">
+    {{#each subscribers}}
+      {{> userItem}}
+    {{/each}}
+  </div>
+</template>
