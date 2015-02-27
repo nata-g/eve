@@ -7,6 +7,7 @@ Template.header.events({
       function(error) {
         if (error) {
           // Display the login error to the user however you want
+          return throwError(error.reason);
         }
         else {
           Router.go('dashboard');

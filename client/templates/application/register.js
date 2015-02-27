@@ -1,30 +1,50 @@
+Template.register.created = function() {
+  Session.set('registerErrors', {});
+}
+
+Template.register.helpers({
+  errorMessage: function(field) {
+    return Session.get('registerErrors')[field];
+  },
+  errorClass: function(field) {
+    // !! converts to boolean and ensures boolean type
+    return !!Session.get('registerErrors')[field] ? 'has-error' : '';
+  }
+});
+
 Template.register.events({
   // e = event, t = template
   'submit #register-form': function(e, t) {
     e.preventDefault();
-    var name = t.find('#account-name').value
-      , phone = t.find('#account-phone').value
-      , email = t.find('#account-email').value
-      , password = t.find('#account-password').value;
+    var user = {
+      name: t.find('#account-name').value,
+      phone: t.find('#account-phone').value,
+      email: t.find('#account-email').value,
+      password: t.find('#account-password').value
+    };
 
     // trim helper
     var trimInput = function(val) {
       return val.replace(/^\s*|\s*$/g, "");
     }
 
-    var email = trimInput(email);
+    var email = trimInput(user.email);
+
+    var errors = validateNewUser(user);
+    if (errors.name|| errors.phone || error.email)
+      return Session.set('registerErrors', errors);
 
     Accounts.createUser({
       email: email,
-      password: password,
+      password: user.password,
       profile: {
-        name: name,
-        phone: phone
+        name: user.name,
+        phone: user.phone
       },
     }, function(err){
       if (err) {
         // Inform the user that account creation failed
-        alert('Oops, something went wrong');
+        return throwError(error.reason);
       } else {
         // Success. Account has been created and the user
         // has logged in successfully.

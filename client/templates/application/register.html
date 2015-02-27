@@ -2,23 +2,27 @@
   <h2 class="text-center">Sign Up</h2>
   <form id="register-form" action="action">
 
-    <div class="form-group">
+    <div class="form-group {{errorClass 'name'}}">
       <label for="account-name">Name</label>
       <input type="text" class="form-control" id="account-name" placeholder="Full name" />
+      <span class="help-block">{{errorMessage 'name'}}</span>
     </div>
-    <div class="form-group">
+    <div class="form-group {{errorClass 'phone'}}">
       <label for="account-phone">Phone</label>
       <input type="account-phone" class="form-control" id="account-phone" placeholder="(512) 555-5555" />
+      <span class="help-block">{{errorMessage 'phone'}}</span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{errorClass 'email'}}">
       <label for="account-name">Email</label>
       <input type="email" class="form-control" id="account-email" placeholder="eve@awesome.com"/>
+      <span class="help-block">{{errorMessage 'email'}}</span>
     </div>
 
-    <div class="form-group">
+    <div class="form-group {{errorClass 'password'}}">
       <label for="account-password">Password</label>
       <input type="password" class="form-control" id="account-password" placeholder="Keep it secret!" />
+      <span class="help-block">{{errorMessage 'password'}}</span>
     </div>
 
     <button type="submit" id="create-account" class="btn btn-primary">Sign Up</button>
