@@ -10,7 +10,10 @@ Template.dashboard.helpers({
     return Meteor.user().profile.phone;
   },
   isSubscribed: function() {
-    return Meteor.user().profile.isSubscribed === true;
+    return Meteor.user().subscription.status === 'active';
+  },
+  paymentDue: function() {
+    return Meteor.user().subscription.ends;
   }
 });
 

@@ -13,3 +13,5 @@ sacha:spin
 accounts-base
 accounts-password
 mrgalaxy:stripe
+momentjs:moment
+email

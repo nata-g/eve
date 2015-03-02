@@ -1,0 +1,14 @@
+<template name="flashes">
+  <div class="flashes">
+    {{#each flashes}}
+      {{> flash}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="flash">
+  <div class="alert {{style}}" role="alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{message}}
+  </div>
+</template>

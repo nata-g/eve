@@ -23,15 +23,10 @@ Template.register.events({
       password: t.find('#account-password').value
     };
 
-    // trim helper
-    var trimInput = function(val) {
-      return val.replace(/^\s*|\s*$/g, "");
-    }
-
     var email = trimInput(user.email);
 
     var errors = validateNewUser(user);
-    if (errors.name|| errors.phone || error.email)
+    if (errors.name|| errors.phone || errors.email)
       return Session.set('registerErrors', errors);
 
     Accounts.createUser({
@@ -44,7 +39,7 @@ Template.register.events({
     }, function(err){
       if (err) {
         // Inform the user that account creation failed
-        return throwError(error.reason);
+        return throwFlash.error(err.reason);
       } else {
         // Success. Account has been created and the user
         // has logged in successfully.

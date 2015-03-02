@@ -147,7 +147,7 @@ body {
   100% {opacity: 0;}
 }
 
-.errors{
+.flashes {
   position: fixed;
   z-index: 10000;
   padding: 10px;
@@ -180,6 +180,19 @@ body {
 
 #login-form {
   padding: 20px;
+}
+
+#login-form a {
+  margin-top: 10px;
+  display: block;
+}
+
+.reset-password {
+  margin-top: 40px;
+}
+
+#new-password {
+  margin: 40px auto;
 }
 
 label {

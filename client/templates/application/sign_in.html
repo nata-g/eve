@@ -1,0 +1,19 @@
+<template name="signIn">
+  <form id="login-form" action="action">
+    <div class="form-group">
+      <label for="login-username">Email</label>
+      <input type="text" class="form-control" id="login-email" placeholder="Email" />
+    </div>
+    {{#if userForgot}}
+      <button type="submit" id="resetPassword" class="btn btn-primary">Send Reset Instructions</button>
+      <a href="#" class="nevermind">Nevermind, I remember</a>
+    {{else}}
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" class="form-control" id="login-password" placeholder="Password" />
+      </div>
+      <button type="submit" id="signIn" class="btn btn-primary">Sign In</button>
+      <a href="#" class="forgot">Forgot password?</a>
+    {{/if}}
+  </form>
+</template>
