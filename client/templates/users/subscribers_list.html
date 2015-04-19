@@ -1,5 +1,6 @@
 <template name="subscribersList">
   <h2>{{subscriberCount}} subscribers</h2>
+  <button class="btn btn-primary btn-large" id="send-message">Send Message</button>
   <div class="users">
     {{#each subscribers}}
       {{> userItem}}

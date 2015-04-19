@@ -1,4 +1,4 @@
-var Stripe = StripeAPI('sk_test_4SRU3kmVuOF2xrvQAWiYTNMv');
+var Stripe = StripeAPI(Meteor.settings.public.stripePublishableKey);
 
 Meteor.methods({
   subscribe: function(token){
@@ -15,6 +15,7 @@ Meteor.methods({
       Meteor.users.update(Meteor.userId(), {$set: {
         'subscription.status': customer.subscription.status,
         'subscription.ends': customer.subscription.current_period_end,
+        'subscription.id': customer.subscription.id,
         customerId: customer.id
         }
       });
@@ -50,6 +51,24 @@ Meteor.methods({
       'subscription.ends': update.subscription.current_period_end
       }
     });
+  },
+  cancelUserSubscription: function(user) {
+    var stripeCancelSubscription = Meteor.wrapAsync(Stripe.customers.cancelSubscription, Stripe.customers);
+    try {
+      var result = stripeCancelSubscription(
+        user.customerId,
+        user.subscription.id,
+        { at_period_end: true }
+      );
+      console.log(result);
+      Meteor.users.update(user, {$set: {
+        'subscription.cancel_at_period_end': result.cancel_at_period_end,
+        }
+      });
+    }
+    catch (err) {
+      console.log(err.message);
+    }
   }
 });
 

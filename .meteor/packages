@@ -15,3 +15,7 @@ accounts-password
 mrgalaxy:stripe
 momentjs:moment
 email
+okgrow:analytics
+mrt:twilio-meteor
+percolate:synced-cron
+loftsteinn:intl-tel-input

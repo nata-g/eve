@@ -1,7 +1,8 @@
 <template name="userItem">
   <div class="user">
     <div class="user-content">
-      <h3><a href="{{pathFor 'userPage'}}">{{name}}</a><span>{{profile.phone}}</span></h3>
+      <h3><a href="{{pathFor 'userPage'}}">{{profile.name}}</a><span>{{formatPhone profile.phone}}</span></h3>
+      <p>Member since: {{formatTime createdAt}}</p>
     </div>
   </div>
 </template>

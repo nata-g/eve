@@ -14,6 +14,9 @@ Template.dashboard.helpers({
   },
   paymentDue: function() {
     return Meteor.user().subscription.ends;
+  },
+  hasCanceled: function() {
+    return Meteor.user().subscription.cancel_at_period_end === true;
   }
 });
 
@@ -24,7 +27,13 @@ Template.dashboard.events({
       token: function(token) {
         // Use the token to create the charge with a server-side script.
         // You can access the token ID with `token.id`
-        Meteor.call('subscribe', token);
+        Meteor.call('subscribe', token, function(err, result) {
+          if (err) {
+            console.log(err.reason);
+          } else {
+            analytics.track('Subscribed');
+          }
+        });
       },
       image: "https://stripe.com/img/documentation/checkout/marketplace.png",
       name: "Eve",
@@ -35,6 +44,18 @@ Template.dashboard.events({
     handler.open({
       email: Meteor.user().emails[0].address
     });
+    analytics.track('Clicked Subscribe');
     e.preventDefault();
+  },
+  'click .cancel-subscription': function(e) {
+    var confirmCancel = confirm("Are you sure you want to cancel your subscription? This means your subscription will no longer be active and your account will be disabled on the cancellation date. If you'd like, you can resubscribe later.")
+    if (confirmCancel) {
+      var user = Meteor.user();
+      Meteor.call('cancelUserSubscription', user, function(err, response) {
+        if (err) {
+          throwFlash.error(err.message);
+        }
+      });
+    }
   }
 });

@@ -1,4 +1,4 @@
-.grid-block, .main, .user, .comments li, .comment-form {
+.grid-block, .main, .user, .messages li, .message-form {
   background: #fff;
   border-radius: 3px;
   padding: 10px;
@@ -86,19 +86,29 @@ body {
     float: right;
     margin-top: 7px; }
 
-.comments {
+.messages {
   list-style-type: none;
   margin: 0; }
-  .comments li h4 {
+  .messages li h4 {
     font-size: 16px;
     margin: 0; }
-    .comments li h4 .date {
+    .messages li h4 .date {
       font-size: 12px;
       font-weight: normal; }
-    .comments li h4 a {
+    .messages li h4 a {
       font-size: 12px; }
-  .comments li p:last-child {
+  .messages li p:last-child {
     margin-bottom: 0; }
+  .messages li span.date {
+    float: right;
+  }
+  .messages #body {
+    width: 90%;
+    display: inline;
+  }
+  .messages button {
+    float: right;
+  }
 
 .dropdown-menu span {
   display: block;
@@ -277,6 +287,18 @@ li.you{text-align: left;}
 
 .form-control {
   height: 44px;
+}
+
+.intl-tel-input {
+  width: 100%;
+}
+.intl-tel-input input[type=tel] {
+  padding-left: 48px;
+}
+
+.intl-tel-input .selected-flag {
+  width: 42px;
+  padding: 0 0 0 12px;
 }
 
 .btn {

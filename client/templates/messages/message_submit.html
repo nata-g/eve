@@ -1,0 +1,11 @@
+<template name="messageSubmit">
+  <form name="message" class="form">
+    <div class="form-group {{errorClass 'body'}}">
+      <div class="controls">
+        <textarea name="body" id="body" class="form-control" placeholder="New message" rows="2"></textarea>
+        <button type="submit" id="send" class="btn btn-primary">Send</button>
+        <span class="help-block">{{errorMessage 'body'}}</span>
+      </div>
+    </div>
+  </form>
+</template>
