@@ -1,6 +1,6 @@
 Meteor.methods({
   sendSMS: function(message) {
-    twilio = Twilio(Meteor.settings.public.twilioAccountSID, Meteor.settings.public.twilioAuthToken);
+    twilio = Twilio(Meteor.settings.public.twilio.accountSID, Meteor.settings.public.twilio.authToken);
     twilio.sendSms({
       to: message.to, // Any number Twilio can deliver to
       from: '+15128656383', // A number you bought from Twilio and can use for outbound communication
@@ -39,7 +39,7 @@ var testList = [
 ];
 
 function sendMessage(details) {
-  twilio = Twilio(Meteor.settings.public.twilioAccountSID, Meteor.settings.public.twilioAuthToken);
+  twilio = Twilio(Meteor.settings.public.twilio.accountSID, Meteor.settings.public.twilio.authToken);
   _.each(testList, function(subscriber) {
       var messageName = details.name;
       var name = subscriber.profile.name;

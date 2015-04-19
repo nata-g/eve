@@ -1,4 +1,4 @@
-var Stripe = StripeAPI(Meteor.settings.public.stripePublishableKey);
+var Stripe = StripeAPI(Meteor.settings.private.stripe.secretKey);
 
 Meteor.methods({
   subscribe: function(token){
